@@ -130,4 +130,4 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+NPM_BIN_PATH = "/home/codespace/nvm/current/bin/npm"
