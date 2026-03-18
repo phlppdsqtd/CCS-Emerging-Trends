@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create Blog Post</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:40px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+/* Image Upload */
+
+.image-upload input{
+    display:none;
+}
+
+.upload-box{
+    border:2px dashed #ccc;
+    border-radius:8px;
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#888;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.upload-box:hover{
+    border-color:#666;
+    color:#333;
+}
+
+/* Inputs */
+
+.form-group{
+    margin-top:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    font-size:16px;
+}
+
+textarea{
+    min-height:200px;
+    resize:vertical;
+}
+
+/* Button */
+
+.publish-btn{
+    margin-top:25px;
+    padding:14px 24px;
+    background:#2d6cdf;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.publish-btn:hover{
+    background:#1f4fb3;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Create Blog Post</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<!-- Image Upload -->
+<div class="form-group">
+<input type="text" name="image_url" placeholder="Image URL (optional)">
+</div>
+
+<!-- Title -->
+<div class="form-group">
+<input type="text" name="title" placeholder="Post Title" required>
+</div>
+
+<!-- Writer -->
+<div class="form-group">
+<input type="text" name="writer" placeholder="Writer Name" required>
+</div>
+
+<!-- Content -->
+<div class="form-group">
+<textarea name="content" placeholder="Write your content here..." required></textarea>
+</div>
+
+<button type="submit" class="publish-btn">Publish Post</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

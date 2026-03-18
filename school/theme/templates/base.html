@@ -2,124 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Create Blog Post</title>
+<title>University of St. La Salle</title>
 
 <style>
-
 body{
     font-family: Arial, sans-serif;
-    background:#f4f6f9;
     margin:0;
-    padding:40px;
+    background:#f4f6f9;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
+/* Header */
+.header{
+    text-align:center;
+    padding:30px 20px;
     background:white;
-    padding:40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header img{
+    width:80px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    margin:0;
+}
+
+/* Sections */
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.section-title{
+    font-size:22px;
+    margin-top:30px;
+}
+
+.divider{
+    height:2px;
+    background:#ddd;
+    margin:10px 0 20px 0;
+}
+
+/* Post Card */
+.news-card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
     border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-h1{
-    margin-bottom:30px;
-}
-
-/* Image Upload */
-
-.image-upload input{
-    display:none;
-}
-
-.upload-box{
-    border:2px dashed #ccc;
-    border-radius:8px;
-    height:200px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#888;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.upload-box:hover{
-    border-color:#666;
-    color:#333;
-}
-
-/* Inputs */
-
-.form-group{
-    margin-top:20px;
-}
-
-input, textarea{
+.news-card img{
     width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:6px;
-    font-size:16px;
-}
-
-textarea{
-    min-height:200px;
-    resize:vertical;
+    border-radius:8px;
+    margin-bottom:10px;
 }
 
 /* Button */
-
-.publish-btn{
-    margin-top:25px;
-    padding:14px 24px;
+.add-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:12px 20px;
     background:#2d6cdf;
     color:white;
-    border:none;
+    text-decoration:none;
     border-radius:6px;
-    font-size:16px;
-    cursor:pointer;
 }
 
-.publish-btn:hover{
+.add-btn:hover{
     background:#1f4fb3;
 }
-
 </style>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
+<div class="header">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1yj-e2MMoLAlUCP97-T5-gvvmqboyIHa-WA&s">
+    <h1>University of St. La Salle</h1>
+</div>
+
 <div class="container">
 
-<h1>Create Blog Post</h1>
+    <!-- NEWS SECTION -->
+    <div class="section-title">News</div>
+    <div class="divider"></div>
+    <!-- (empty for now) -->
 
-<!-- Image Upload -->
-<div class="image-upload">
-<label for="image">
-<div class="upload-box">
-Upload Cover Image
-</div>
-</label>
-<input type="file" id="image">
-</div>
+    <!-- POSTS SECTION -->
+    <div class="section-title">Posts</div>
+    <div class="divider"></div>
 
-<!-- Title -->
-<div class="form-group">
-<input type="text" placeholder="Post Title">
-</div>
+    <!-- Add Post Button -->
+    <a href="/school/cms/" class="add-btn">+ Add New Post</a>
 
-<!-- Writer -->
-<div class="form-group">
-<input type="text" placeholder="Writer Name">
-</div>
+    <!-- POSTS LOOP -->
+    {% for post in posts %}
 
-<!-- Content -->
-<div class="form-group">
-<textarea placeholder="Write your content here..."></textarea>
-</div>
+    <div class="news-card">
 
-<button class="publish-btn">Publish Post</button>
+        {% if post.image_url %}
+        <img src="{{ post.image_url }}">
+        {% endif %}
+
+        <h3>{{ post.title }}</h3>
+        <p><b>{{ post.writer }}</b></p>
+        <p>{{ post.content }}</p>
+
+    </div>
+
+    {% empty %}
+        <p>No posts yet.</p>
+    {% endfor %}
 
 </div>
 
