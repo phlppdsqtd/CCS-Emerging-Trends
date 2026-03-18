@@ -1,4 +1,8 @@
-# Ignore Python bytecode
+# Python compiled files
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+
+# Django static files (optional)
+staticfiles/
